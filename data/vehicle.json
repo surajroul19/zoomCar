@@ -1,0 +1,45 @@
+{
+  "vehicles": {
+    "tiago001": {
+      "id": "tiago001",
+      "name": "Tata Tiago",
+      "welcomeMessage": "Welcome to your vehicle. Thank you for choosing our vehicle. We wish you a safe and memorable journey.",
+      "heroImage": "./assets/images/tiago-hero.png",
+      "quickInfo": {
+        "Fuel Type": "Petrol",
+        "Transmission": "Manual",
+        "Seating Capacity": "5 Seats",
+        "Mileage": "19 km/l"
+      },
+      "specifications": {
+        "Registration": "Sample rental vehicle",
+        "Fuel Tank": "35 litres",
+        "Boot Space": "242 litres",
+        "Tyres": "175/65 R14",
+        "Airbags": "Dual front airbags",
+        "Parking": "Reverse camera assisted"
+      },
+      "features": [
+        "Reverse Camera",
+        "Bluetooth",
+        "Android Auto",
+        "USB Charging",
+        "Air Conditioning"
+      ],
+      "gallery": [
+        "./assets/images/tiago-hero.png",
+        "./assets/images/tiago-hero.png",
+        "./assets/images/tiago-hero.png"
+      ],
+      "host": {
+        "name": "Vehicle Host",
+        "phone": "+919999999999",
+        "whatsapp": "919999999999"
+      },
+      "documents": ["RC copy", "Insurance", "Pollution certificate", "Rental agreement"],
+      "serviceCenterMapUrl": "https://www.google.com/maps/search/nearby+car+service+center",
+      "mapsUrl": "https://www.google.com/maps"
+    }
+  },
+  "fallbackVehicleId": "tiago001"
+}

@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Smart Vehicle Companion Portal for rental vehicle guide, support, recommendations, and feedback.">
+    <meta name="theme-color" content="#2563EB">
+    <title>Smart Vehicle Companion Portal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/main.css">
+    <script type="module" src="./js/app.js"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#app">Skip to content</a>
+    <header class="topbar" data-component="topbar">
+      <a class="brand" href="#/" aria-label="Smart Vehicle Companion home">
+        <img src="./assets/icons/app-icon.svg" alt="" width="34" height="34">
+        <span>Vehicle Companion</span>
+      </a>
+      <button class="icon-button" data-action="open-menu" aria-label="Open menu" aria-expanded="false">☰</button>
+    </header>
+
+    <nav class="drawer" data-component="drawer" aria-label="Main navigation"></nav>
+    <main id="app" tabindex="-1"></main>
+    <nav class="bottom-nav" data-component="bottom-nav" aria-label="Primary"></nav>
+    <div data-component="floating-action"></div>
+  </body>
+</html>

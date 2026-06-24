@@ -1,0 +1,24 @@
+{
+  "items": [
+    {
+      "question": "What is the fuel policy?",
+      "answer": "Return the vehicle with the agreed fuel level. Keep fuel receipts when possible."
+    },
+    {
+      "question": "How do I extend my trip?",
+      "answer": "Use the rental platform or contact the host before your current booking end time."
+    },
+    {
+      "question": "What should I do for a puncture?",
+      "answer": "Park safely, switch on hazard lights, contact support, and use the spare wheel only if you are comfortable doing so."
+    },
+    {
+      "question": "What should I do after an accident?",
+      "answer": "Move to safety, call emergency services if needed, document the scene, and inform the host immediately."
+    },
+    {
+      "question": "Where are the documents?",
+      "answer": "Digital and physical copies are kept as per host instructions. Check the glove box and document section."
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Vehicle Companion icon">
+  <rect width="64" height="64" rx="14" fill="#2563EB"/>
+  <path d="M16 37h32l-4-12a7 7 0 0 0-7-5H27a7 7 0 0 0-7 5l-4 12Z" fill="#F8FAFC"/>
+  <path d="M20 37h24v9H20z" fill="#0F172A"/>
+  <circle cx="24" cy="47" r="4" fill="#F59E0B"/>
+  <circle cx="40" cy="47" r="4" fill="#F59E0B"/>
+  <path d="M24 29h16" stroke="#2563EB" stroke-width="3" stroke-linecap="round"/>
+</svg>

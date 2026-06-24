@@ -1,0 +1,36 @@
+{
+  "tiago001": {
+    "touristAttractions": [
+      {
+        "name": "Scenic View Point",
+        "description": "A quick stop for sunrise photos and a calm start to the drive.",
+        "image": "./assets/images/tiago-hero.png",
+        "mapUrl": "https://www.google.com/maps/search/tourist+attractions+near+me"
+      }
+    ],
+    "restaurants": [
+      {
+        "name": "Highway Family Restaurant",
+        "description": "Reliable meal stop with parking and quick service.",
+        "image": "./assets/images/tiago-hero.png",
+        "mapUrl": "https://www.google.com/maps/search/restaurants+near+me"
+      }
+    ],
+    "cafes": [
+      {
+        "name": "Roadside Coffee Stop",
+        "description": "Good place for a short break before the next stretch.",
+        "image": "./assets/images/tiago-hero.png",
+        "mapUrl": "https://www.google.com/maps/search/cafes+near+me"
+      }
+    ],
+    "fuelStations": [
+      {
+        "name": "Nearby Fuel Station",
+        "description": "Use this search before long highway sections.",
+        "image": "./assets/images/tiago-hero.png",
+        "mapUrl": "https://www.google.com/maps/search/fuel+station+near+me"
+      }
+    ]
+  }
+}

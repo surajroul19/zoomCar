@@ -1,0 +1,22 @@
+{
+  "tiago001": [
+    {
+      "title": "Front bumper scratch",
+      "location": "Lower left front bumper",
+      "description": "Light visible scratch recorded before handover.",
+      "image": "./assets/images/tiago-hero.png"
+    },
+    {
+      "title": "Rear door scratch",
+      "location": "Passenger-side rear door",
+      "description": "Minor surface scratch. Please photograph it during pre-trip check.",
+      "image": "./assets/images/tiago-hero.png"
+    },
+    {
+      "title": "Wheel cap damage",
+      "location": "Rear left wheel cap",
+      "description": "Small scuff on wheel cap edge.",
+      "image": "./assets/images/tiago-hero.png"
+    }
+  ]
+}

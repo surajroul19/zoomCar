@@ -1,0 +1,151 @@
+{
+    "nodes": [
+        {
+            "id": "ScheduleTrigger",
+            "name": "Schedule Trigger",
+            "type": "n8n-nodes-base.scheduleTrigger",
+            "typeVersion": 1,
+            "position": [
+                200,
+                300
+            ],
+            "parameters": {
+                "rule": {
+                    "interval": [
+                        {
+                            "field": "minutes",
+                            "minutesInterval": 5
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "id": "Gmail",
+            "name": "Gmail",
+            "type": "n8n-nodes-base.gmail",
+            "typeVersion": 2,
+            "position": [
+                400,
+                300
+            ],
+            "parameters": {
+                "resource": "message",
+                "operation": "getAll",
+                "returnAll": false,
+                "limit": 10,
+                "filters": {
+                    "q": "is:unread"
+                }
+            },
+            "credentials": {
+                "gmailOAuth2": {
+                    "id": "99380@Hi",
+                    "name": "Gmail"
+                }
+            }
+        },
+        {
+            "id": "IF",
+            "name": "IF Subject يحتوي Job",
+            "type": "n8n-nodes-base.if",
+            "typeVersion": 2,
+            "position": [
+                600,
+                300
+            ],
+            "parameters": {
+                "conditions": {
+                    "options": {
+                        "caseSensitive": false
+                    },
+                    "conditions": [
+                        {
+                            "leftValue": "={{$json.subject}}",
+                            "rightValue": "Job",
+                            "operator": {
+                                "type": "string",
+                                "operation": "contains"
+                            }
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "id": "GoogleSheets",
+            "name": "Google Sheets",
+            "type": "n8n-nodes-base.googleSheets",
+            "typeVersion": 4,
+            "position": [
+                800,
+                300
+            ],
+            "parameters": {
+                "operation": "append",
+                "sheetId": "YOUR_SHEET_ID",
+                "range": "Sheet1!A:D",
+                "options": {},
+                "columns": [
+                    {
+                        "name": "Subject",
+                        "value": "={{$json.subject}}"
+                    },
+                    {
+                        "name": "From",
+                        "value": "={{$json.from}}"
+                    },
+                    {
+                        "name": "Date",
+                        "value": "={{$json.date}}"
+                    },
+                    {
+                        "name": "Snippet",
+                        "value": "={{$json.snippet}}"
+                    }
+                ]
+            },
+            "credentials": {
+                "googleSheetsOAuth2Api": {
+                    "id": "YOUR_GOOGLE_SHEETS_CREDENTIAL_ID",
+                    "name": "Google Sheets"
+                }
+            }
+        }
+    ],
+    "connections": {
+        "Schedule Trigger": {
+            "main": [
+                [
+                    {
+                        "node": "Gmail",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Gmail": {
+            "main": [
+                [
+                    {
+                        "node": "IF",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "IF": {
+            "main": [
+                [
+                    {
+                        "node": "GoogleSheets",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        }
+    }
+}
