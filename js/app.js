@@ -36,22 +36,89 @@ function bindChecklist() {
   update();
 }
 
+function isGoogleFormConfigured(feedbackForm) {
+  const fields = feedbackForm?.fields || {};
+
+  return Boolean(
+    feedbackForm?.url &&
+    !feedbackForm.url.includes("YOUR_GOOGLE_FORM_ID") &&
+    fields.ratings &&
+    fields.name &&
+    fields.feedback
+  );
+}
+
+function getGoogleFormPostUrl(formUrl) {
+  return formUrl.replace(/\/viewform(?:\?.*)?$/, "/formResponse");
+}
+
+function buildGoogleFormPayload({ feedbackForm, ratings, name, feedback }) {
+  const payload = new URLSearchParams();
+  const fields = feedbackForm.fields || {};
+  const values = {
+    ratings: ratings ? `${ratings} star${ratings === 1 ? "" : "s"}` : "",
+    name,
+    feedback
+  };
+
+  Object.entries(values).forEach(([key, value]) => {
+    if (fields[key] && value) {
+      payload.set(fields[key], value);
+    }
+  });
+
+  payload.set("fvv", "1");
+  payload.set("pageHistory", "0");
+  payload.set("submit", "Submit");
+
+  return payload;
+}
+
 function bindFeedback() {
   const form = document.querySelector("[data-feedback-form]");
   if (!form) return;
   let rating = 0;
+  const ratingInput = form.querySelector("[data-rating-value]");
   form.querySelectorAll("[data-rating]").forEach((button) => {
     button.addEventListener("click", () => {
       rating = Number(button.dataset.rating);
+      ratingInput.value = String(rating);
       form.querySelectorAll("[data-rating]").forEach((star) => {
         star.classList.toggle("active", Number(star.dataset.rating) <= rating);
       });
     });
   });
-  form.addEventListener("submit", (event) => {
+  form.addEventListener("submit", async (event) => {
     event.preventDefault();
-    window.dispatchEvent(new CustomEvent("portal:toast", { detail: `Thanks for rating ${rating || "the trip"}.` }));
-    form.reset();
+    const formData = new FormData(form);
+    const feedbackForm = portalData.vehicle.feedbackForm;
+
+    if (!isGoogleFormConfigured(feedbackForm)) {
+      window.dispatchEvent(new CustomEvent("portal:toast", { detail: "Google Form is ready in the app, but the real form URL and entry IDs still need to be added in vehicle.json." }));
+      return;
+    }
+
+    const payload = buildGoogleFormPayload({
+      feedbackForm,
+      ratings: rating,
+      name: formData.get("name"),
+      feedback: formData.get("feedback")
+    });
+
+    try {
+      await fetch(getGoogleFormPostUrl(feedbackForm.url), {
+        method: "POST",
+        mode: "no-cors",
+        body: payload
+      });
+      window.dispatchEvent(new CustomEvent("portal:toast", { detail: "Your feedback has been submitted. Thank you." }));
+      form.reset();
+      rating = 0;
+      ratingInput.value = "";
+      form.querySelectorAll("[data-rating]").forEach((star) => star.classList.remove("active"));
+    } catch {
+      window.dispatchEvent(new CustomEvent("portal:toast", { detail: "Feedback could not be submitted. Please try again or use WhatsApp feedback." }));
+    }
   });
 }
 
