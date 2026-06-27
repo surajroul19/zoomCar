@@ -139,6 +139,21 @@ Recommended process:
 - Replace placeholder Google Form link with a real form endpoint or static form provider.
 - Add service-worker caching when the asset set stabilizes.
 
+## Google Form Feedback Setup
+
+The feedback page submits directly to Google Forms with the customer-selected rating, name, and feedback message.
+
+1. Create a Google Form with these fields:
+   - Ratings
+   - Name
+   - Feedback
+2. In Google Forms, use **Get pre-filled link**, type sample values into each field, and copy the generated URL.
+3. In that URL, copy each `entry.xxxxxxxxxx` parameter name and place it in `data/vehicle.json` under `feedbackForm.fields`.
+4. Replace `feedbackForm.url` with your form's `/viewform` URL.
+5. In Google Forms, enable email notifications from the **Responses** tab so each submission reaches your inbox.
+
+After those values are replaced, the portal's feedback submit button sends a background POST request to the Google Forms `/formResponse` endpoint. The customer stays on the feedback page and sees a confirmation message.
+
 ## Performance and Accessibility
 
 - Mobile-first layout supports 320px, 375px, 768px, 1024px, and 1440px widths.
