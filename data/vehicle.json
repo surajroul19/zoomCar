@@ -16,7 +16,7 @@
         "Fuel Tank": "35 litres",
         "Boot Space": "242 litres",
         "Tyres": "175/65 R14",
-        "Airbags": "Dual front airbags",
+        "Airbags": "6 airbags",
         "Parking": "Reverse camera assisted"
       },
       "features": [
@@ -27,14 +27,22 @@
         "Air Conditioning"
       ],
       "gallery": [
-        "./assets/images/tiago-hero.png",
-        "./assets/images/tiago-hero.png",
-        "./assets/images/tiago-hero.png"
+        "./assets/images/tiago-hero1.png",
+        "./assets/images/tiago-hero2.png",
+        "./assets/images/tiago-hero3.png"
       ],
       "host": {
-        "name": "Vehicle Host",
-        "phone": "+919999999999",
-        "whatsapp": "919999999999"
+        "name": "Host",
+        "phone": "9938039539",
+        "whatsapp": "9938039539"
+      },
+      "feedbackForm": {
+        "url": "https://docs.google.com/forms/d/e/1FAIpQLSczZwRS82xjEoTb3CjS4EaGezI9IZSUbEmLHctevUig6aMobQ/viewform",
+        "fields": {
+          "ratings": "entry.1621175860",
+          "name": "entry.310842830",
+          "feedback": "entry.1650493715"
+        }
       },
       "documents": ["RC copy", "Insurance", "Pollution certificate", "Rental agreement"],
       "serviceCenterMapUrl": "https://www.google.com/maps/search/nearby+car+service+center",
