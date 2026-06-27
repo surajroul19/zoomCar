@@ -144,12 +144,13 @@ export function feedback({ vehicle }) {
         <label class="field">Rating
           <span class="stars" data-stars>${[1, 2, 3, 4, 5].map((star) => `<button class="star" type="button" data-rating="${star}" aria-label="${star} star">★</button>`).join("")}</span>
         </label>
+        <input type="hidden" name="ratings" data-rating-value value="">
         <label class="field">Name <input name="name" autocomplete="name" required></label>
-        <label class="field">Feedback <textarea name="message" rows="5" required placeholder="Share your experience"></textarea></label>
+        <label class="field">Feedback <textarea name="feedback" rows="5" required placeholder="Share your experience"></textarea></label>
         <div class="button-row">
           <button class="button primary" type="submit">Submit Feedback</button>
           <a class="button accent" href="https://wa.me/${vehicle.host.whatsapp}?text=Feedback%20for%20${encodeURIComponent(vehicle.name)}" target="_blank" rel="noopener">WhatsApp Feedback</a>
-          <a class="button ghost" href="#" aria-disabled="true">Google Form Placeholder</a>
+          <a class="button ghost" href="${vehicle.feedbackForm?.url || "#"}" target="_blank" rel="noopener">Open Google Form</a>
         </div>
       </form>
     </section>
